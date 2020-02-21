@@ -6,8 +6,14 @@ module.exports = {
     index, 
     show,
     new: newSkill,
+    create,
 }
 
+function create(req, res) {
+    req.body.done = false;
+    Skill.create(req.body);
+    res.redirect('/skills');
+  }
 
 function newSkill(req, res) {
     res.render('skills/new');
